@@ -12,7 +12,7 @@ const pool = new Pool({
 
 console.log("Connexion réussie à la base de données");
 
-const sql_create = fs.readFile(__dirname + "/createDB.sql", (err, dat) => {
+const sql_create = fs.readFile(__dirname + "/createDB.sql", (err, data) => {
     if (err) {
         return console.error(err.message);
     }
