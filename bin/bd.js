@@ -1,3 +1,4 @@
+const path = require("path");
 const { Pool } = require("pg");
 const fs = require("fs");
 
@@ -5,8 +6,8 @@ const pool = new Pool({
     user: "postgres",
     host: "localhost",
     database: "nurdeeps",
-    password: "pouet",
-    port: 3333
+    password: "Password123",
+    port: 5433
 });
 
 console.log("Connexion réussie à la base de données");
