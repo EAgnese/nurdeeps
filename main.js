@@ -23,4 +23,8 @@ app.get('*', (req, res) => {
     res.status(404).render("error");
 });
 
+app.listen(8000,function(){
+    console.log("Live at Port 8000");
+});
+
 module.exports = app;
