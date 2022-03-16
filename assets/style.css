@@ -1,0 +1,26 @@
+* {
+    box-sizing: border-box;
+    color : yellowgreen;
+    background-color:#231442;
+    font-size: 17px;
+}
+
+#app{
+    text-align: center;
+}
+
+body{
+    margin: 0;
+}
+
+table, td {
+    padding: 2px;
+    border: solid 30px;
+    margin: auto;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+header{
+    text-align: center;
+}
