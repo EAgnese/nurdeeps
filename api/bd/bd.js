@@ -17,7 +17,7 @@ const sql_create = fs.readFile(__dirname + "/createDB.sql", (err, data) => {
         return console.error(err.message);
     }
     else {
-        pool.query(data.toString(), [], (err, result) => {
+        pool.query(data.toString(), [], (err) => {
             if (err) {
                 return console.error(err.message);
             }

@@ -1,19 +1,33 @@
-var model_games = require("../models/games_model")
+const model_games = require("../models/games_model")
 
-function create_game(req, res) {
-    const id = req.params.id;
-    promiseIngr = model_ingredient.getIngredientWithCode(id)
-    promiseAllergene = model_ingredient.getAllAllergene()
-    promiseCategorie = model_ingredient.getAllCategoriesIngredient()
-    Promise.all([promiseAllergene, promiseCategorie, promiseUnite]).then((values) => {
-        var alertVal = req.tempData.get('alert_val');
+function add_game(req, res) {
+    const libelle = req.body.libelle;
+    const image = req.body.image;
+    const promise = model_games.postGame(id)
+
+    promise.then((values) => {
         res.send({
-            model : id,
-            listeTVA : values[3].rows,
-            ingr : values[4].rows[0],
-            alertContent : ilesttresfort
+            game_libelle : values[0].rows[0],
+            game_image : values[1].rows[0],
+            game_type_code : ilesttresfort
         })
     }).catch((error) => {
-        res.redirect("/ingredient")
+        console.error(error.message)
     })
 }
+
+function select_game_by_id(req, res) {
+    const id = req.params.id;
+    promise = model_games.getGameById(id)
+    promise.then((values) => {
+        res.redirect("/games")
+    }).catch((error) => {
+        console.error(error.message)
+    })
+}
+
+module.exports = {
+    add_game,
+    select_game_by_id,
+}
+
