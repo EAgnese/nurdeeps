@@ -39,19 +39,18 @@ body{
 }
 
 #games-display, .game-container {
-    font-size: 20px;
-    padding: 5px;
-    border: solid 2px;
+    border: solid 3px;
     border-radius: 20px;
-    margin: auto;
     border-collapse: collapse;
     text-align: center;
 }
 
 #games-display{
-    display : flex;
-    flex-wrap : wrap;
-    flex-direction: row;
-    margin: 25px 15% 60px 15%;
+    margin: 25px 15% 25px 15%;
+}
+
+.game-container{
+    padding: 5px;
+    font-size: 20px;
 }
 
