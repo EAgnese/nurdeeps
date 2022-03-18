@@ -1,4 +1,10 @@
+@font-face{
+    font-family : "conthrax";
+    src: url(conthrax.ttf) ;
+}   
+
 * {
+    font-family: "conthrax", sans-serif;
     box-sizing: border-box;
     color : yellowgreen;
     background-color:#231442;
