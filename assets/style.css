@@ -38,18 +38,18 @@ body{
     margin: 0;
 }
 
-#games-display, .game-container {
+#games-display, .game-container,#sugestions-display, .suggestion-container  {
     border: solid 3px;
     border-radius: 20px;
     border-collapse: collapse;
     text-align: center;
 }
 
-#games-display{
+#games-display ,#sugestions-display{
     margin: 25px 15% 25px 15%;
 }
 
-.game-container{
+.game-container , .suggestion-container {
     padding: 5px;
     font-size: 20px;
 }
