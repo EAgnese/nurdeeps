@@ -10,19 +10,11 @@ app.component('games-display',{
     template:
     /*html*/
     `
-    <table>
-        <thead>
-            <tr>
-                <td> hello </td>
-                <td> guys </td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr v-for="game in games">
-                <td> {{game.libelle }}</td>
-                <td> {{game.type_code}} </td>
-            </tr>
-        </tbody>
-    </table>
+        <div id="games-display">
+            <div class="game-container" v-for="game in games">
+                <div class="game-name"> {{game.libelle }}</div>
+                <div class="game-types"> {{game.type_code}} </div>
+            </div>
+        <div>
     `,
 })

@@ -38,16 +38,20 @@ body{
     margin: 0;
 }
 
-table, td {
+#games-display, .game-container {
     font-size: 20px;
-    padding: 3px;
+    padding: 5px;
     border: solid 2px;
-    border-radius: 30px;
+    border-radius: 20px;
     margin: auto;
     border-collapse: collapse;
     text-align: center;
 }
-table{
-    border-radius: 30px;
+
+#games-display{
+    display : flex;
+    flex-wrap : wrap;
+    flex-direction: row;
+    margin: 25px 15% 60px 15%;
 }
 
