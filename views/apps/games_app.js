@@ -21,11 +21,15 @@ const app = Vue.createApp({
                     type_code :5,
                 },
             ],
+            input : "",
         }
     },
     computed:{
         getList(){
             return this.list
+        },
+        getInput(){
+            return this.input
         },
     }
 })

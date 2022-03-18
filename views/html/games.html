@@ -20,7 +20,7 @@
         <div id="app">
             Games <br>
             <input id="search" v-model="input">
-            <games-display :games="getList"></games-display>
+            <games-display v-for="game in getList" :game="game" :input="input"></games-display>
         </div>
     </body>
     <!-- Import  App-->
