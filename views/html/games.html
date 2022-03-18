@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Games</title>
+        <link rel="stylesheet" href="../../assets/style.css">
+        <link rel="icon" href="../../assets/icon.png">
+
+
+        <!-- Import Vue -->
+        <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
+        <!-- Import API -->
+        <!-- <script src="https://unpkg.com/pokeapi-js-wrapper/dist/index.js"></script> -->
+
+    </head>
+
+    <body>
+        <div id="app">
+            <header>
+                Il est tres fort
+            </header>
+            <games-display :games="getList"></games-display>
+        </div>
+    </body>
+    <!-- Import  App-->
+    <script src="../apps/games_app.js"></script>
+    <!-- Import Components -->  
+    <script src="../components/GamesDisplay.js"></script>
+    <!-- Mount App -->
+    <script>
+        const mountedApp = app.mount('#app')
+    </script>
+</html>
