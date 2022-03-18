@@ -14,10 +14,12 @@
     </head>
 
     <body>
+        <header>
+            Il est tres fort
+        </header>
         <div id="app">
-            <header>
-                Il est tres fort
-            </header>
+            Games <br>
+            <input id="search" v-model="input">
             <games-display :games="getList"></games-display>
         </div>
     </body>
