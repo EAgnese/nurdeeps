@@ -34,7 +34,22 @@ function getGameById(id){
     });
 }
 
+function getGames(){
+    return new Promise((resolve, reject) => {
+        const sql = "SELECT * FROM GAMES"
+        pool.query(sql, [], (err, result) => {
+            if (err){
+                console.error(err.message);
+            }
+            else{
+                resolve(result);
+            }
+        });
+    });
+}
+
 module.exports ={
     postGame,
     getGameById,
+    getGames
 }
