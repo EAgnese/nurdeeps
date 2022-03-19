@@ -17,7 +17,7 @@ function select_game_by_id(req, res) {
     const id = req.params.id;
     promise = model_games.getGameById(id)
     promise.then((values) => {
-        res.redirect("/games/id")
+        res.send(values.rows)
     }).catch((error) => {
         console.error(error.message)
     })
