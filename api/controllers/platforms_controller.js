@@ -1,4 +1,4 @@
-const model_run_categories = require("../models/run_types_model")
+const model_run_categories = require("../models/run_categories_model")
 
 function add_platform(req, res) {
     const libelle = req.body.libelle;
