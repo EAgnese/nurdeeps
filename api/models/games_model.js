@@ -22,7 +22,37 @@ function postGame( game_libelle, game_image, game_type_code){
 function getGameById(id){
     return new Promise((resolve, reject) => {
         const values = [id];
-        const sql = "SELECT $1 FROM GAMES"
+        const sql = "SELECT * FROM GAMES WHERE game_code = $1"
+        pool.query(sql, values, (err, result) => {
+            if (err){
+                console.error(err.message);
+            }
+            else{
+                resolve(result);
+            }
+        });
+    });
+}
+
+function getGameByName(name){
+    return new Promise((resolve, reject) => {
+        const values = [name];
+        const sql = "SELECT * FROM GAMES WHERE game_libelle = $1"
+        pool.query(sql, values, (err, result) => {
+            if (err){
+                console.error(err.message);
+            }
+            else{
+                resolve(result);
+            }
+        });
+    });
+}
+
+function getGamesByType(type){
+    return new Promise((resolve, reject) => {
+        const values = [type];
+        const sql = "SELECT * FROM GAMES WHERE game_type_code = $1"
         pool.query(sql, values, (err, result) => {
             if (err){
                 console.error(err.message);
@@ -48,8 +78,28 @@ function getGames(){
     });
 }
 
+function putGame(id, libelle, image, type_code){
+    return new Promise((resolve, reject) => {
+        const values = [id, libelle, image, type_code]
+        const sql = "UPDATE GAMES \
+                    SET game_libelle =$2,game_image =$3,game_type_code =$4\
+                    WHERE game_code=$1"
+        pool.query(sql, values, (err, result) => {
+            if (err){
+                console.error(err.message);
+            }
+            else{
+                resolve(result);
+            }
+        });
+    });
+}
+
 module.exports ={
     postGame,
     getGameById,
-    getGames
+    getGameByName,
+    getGamesByType,
+    getGames,
+    putGame,
 }
