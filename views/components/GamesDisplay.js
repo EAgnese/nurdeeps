@@ -45,10 +45,10 @@ app.component('games-display',{
     template:
     /*html*/
     `
-        <div class="game-container" v-show="isShowed">
-            <div class="game-name"> {{this.game.game_libelle}}</div>
-            <div class="game-image"> {{this.game.game_image}} </div>
-            <div class="game-types"> {{this.game_type_libelle}} </div>
-        </div>
+      <div class="game-container" v-show="isShowed">
+          <div class="game-name"> {{this.game.game_libelle}}</div>
+          <div class="game-image"> {{this.game.game_image}} </div>
+          <div class="game-types"> {{this.game_type_libelle}} </div>
+      </div>
     `,
 })

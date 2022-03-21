@@ -39,7 +39,6 @@ CREATE TABLE IF NOT EXISTS GAME_TYPES (
     PRIMARY KEY (game_type_code)
 );
 
-
 CREATE TABLE IF NOT EXISTS PLATFORMS (
     platform_code SERIAL UNIQUE,
     platform_libelle VARCHAR(100),

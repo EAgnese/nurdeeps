@@ -1,6 +1,6 @@
 const model_run_categories = require("../models/run_types_model")
 
-function add_run_category(req, res) {
+function add_platform(req, res) {
     const libelle = req.body.libelle;
     const promise = model_run_categories.postRunCat(libelle)
     
@@ -11,7 +11,7 @@ function add_run_category(req, res) {
     })
 }
 
-function select_run_category_by_id(req, res) {
+function select_platform_by_id(req, res) {
     const id = req.params.id;
     promise = model_run_categories.getRunCatById(id)
     promise.then((values) => {
@@ -21,7 +21,7 @@ function select_run_category_by_id(req, res) {
     })
 }
 
-function update_run_category(req, res) {
+function update_platform(req, res) {
     const id = req.params.id;
     const libelle = req.body.libelle;
     const image = req.body.image;
@@ -36,8 +36,8 @@ function update_run_category(req, res) {
 
 
 module.exports = {
-    add_run_category,
-    select_run_category_by_id,
-    update_run_category,
+    add_platform,
+    select_platform_by_id,
+    update_platform,
 }
 

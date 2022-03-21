@@ -22,7 +22,7 @@ function postUser( user_name, user_mail, user_password){
 function getUserById(id){
     return new Promise((resolve, reject) => {
         const values = [id];
-        const sql = "SELECT * FROM USERS WHERE user_id = $1"
+        const sql = "SELECT user_id,user_name,user_mail,user_points,user_access FROM USERS WHERE user_id = $1"
         pool.query(sql, values, (err, result) => {
             if (err){
                 console.error(err.message);
@@ -34,10 +34,10 @@ function getUserById(id){
     });
 }
 
-function getUserByMail(mail){
+function getUsersByMail(mail){
     return new Promise((resolve, reject) => {
         const values = [mail];
-        const sql = "SELECT * FROM USERS WHERE user_mail = $1"
+        const sql = "SELECT user_id,user_name,user_mail,user_points,user_access FROM USERS WHERE user_mail = $1"
         pool.query(sql, values, (err, result) => {
             if (err){
                 console.error(err.message);
@@ -52,7 +52,7 @@ function getUserByMail(mail){
 function getUserByName(name){
     return new Promise((resolve, reject) => {
         const values = [name];
-        const sql = "SELECT * FROM USERS WHERE user_name = $1"
+        const sql = "SELECT user_id,user_name,user_mail,user_points,user_access FROM USERS WHERE user_name = $1"
         pool.query(sql, values, (err, result) => {
             if (err){
                 console.error(err.message);
@@ -67,7 +67,7 @@ function getUserByName(name){
 function getUsersByAccess(access){
     return new Promise((resolve, reject) => {
         const values = [access];
-        const sql = "SELECT * FROM USERS WHERE user_access = $1"
+        const sql = "SELECT user_id,user_name,user_mail,user_points,user_access FROM USERS WHERE user_access = $1"
         pool.query(sql, values, (err, result) => {
             if (err){
                 console.error(err.message);
@@ -81,7 +81,7 @@ function getUsersByAccess(access){
 
 function getUsers(){
     return new Promise((resolve, reject) => {
-        const sql = "SELECT * FROM USERS"
+        const sql = "SELECT user_id,user_name,user_mail,user_points,user_access FROM USERS"
         pool.query(sql, [], (err, result) => {
             if (err){
                 console.error(err.message);
@@ -113,7 +113,7 @@ function putUser(user_id, user_name, user_mail, user_password, user_point, user_
 module.exports ={
     postUser,
     getUserById,
-    getUserByMail,
+    getUsersByMail,
     getUserByName,
     getUsersByAccess,
     getUsers,

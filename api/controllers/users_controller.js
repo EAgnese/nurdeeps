@@ -26,7 +26,7 @@ function select_user_by_id(req, res) {
 
 function select_user_by_mail(req, res) {
     const mail = req.params.mail;
-    promise = model_users.getUserByMail(mail)
+    promise = model_users.getUsersByMail(mail)
     promise.then((values) => {
         res.send(values.rows)
     }).catch((error) => {
