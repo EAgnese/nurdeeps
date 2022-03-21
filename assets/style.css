@@ -6,7 +6,7 @@
 * {
     font-family: "conthrax", sans-serif;
     box-sizing: border-box;
-    color : yellowgreen;
+    color : #F2E83A;
     background-color:#231442;
 }
 
@@ -27,8 +27,8 @@ header > a{
 
 #search{
     margin-bottom: 20px;
-    background-color: lightgray;
-    color: #3a8d00;
+    background-color: rgb(228, 228, 228);
+    color: #797106;
     font-size: 15px;
 }
 

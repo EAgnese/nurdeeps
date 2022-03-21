@@ -1,8 +1,8 @@
-const model_game_type = require("../models/game_types_model")
+const model_run_categories = require("../models/run_types_model")
 
-function add_game_type(req, res) {
+function add_run_category(req, res) {
     const libelle = req.body.libelle;
-    const promise = model_game_type.postGameType(libelle)
+    const promise = model_run_categories.postRunCat(libelle)
     
     promise.then((values) => {
         res.send(values.rows)
@@ -11,9 +11,9 @@ function add_game_type(req, res) {
     })
 }
 
-function select_game_type_by_id(req, res) {
+function select_run_category_by_id(req, res) {
     const id = req.params.id;
-    promise = model_game_type.getGameTypeById(id)
+    promise = model_run_categories.getRunCatById(id)
     promise.then((values) => {
         res.send(values.rows)
     }).catch((error) => {
@@ -21,7 +21,7 @@ function select_game_type_by_id(req, res) {
     })
 }
 
-function update_game_type(req, res) {
+function update_run_category(req, res) {
     const id = req.params.id;
     const libelle = req.body.libelle;
     const image = req.body.image;
@@ -36,8 +36,7 @@ function update_game_type(req, res) {
 
 
 module.exports = {
-    add_game_type,
-    select_game_type_by_id,
-    update_game_type,
+    add_run_category,
+    select_run_category_by_id,
 }
 

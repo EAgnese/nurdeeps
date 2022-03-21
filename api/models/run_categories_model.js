@@ -1,10 +1,10 @@
 const pool = require("../bd/bd");
 
-function postGameType( game_type_libelle){
+function postRunCat( run_category_libelle){
     return new Promise((resolve, reject) => {
-        const values = [game_type_libelle];
+        const values = [run_category_libelle];
         const sql = "INSERT INTO \
-                    GAME_TYPES(game_type_libelle)  \
+                    RUN_CATEGORIES(run_category_libelle)  \
                     VALUES \
                     ($1)"
         pool.query(sql, values, (err, result) => {
@@ -18,10 +18,10 @@ function postGameType( game_type_libelle){
     });
 }
 
-function getGameTypeById(id){
+function getRunCatById(id){
     return new Promise((resolve, reject) => {
         const values = [id];
-        const sql = "SELECT * FROM GAME_TYPES WHERE game_type_code = $1"
+        const sql = "SELECT * FROM RUN_CATEGORIES WHERE run_category_code = $1"
         pool.query(sql, values, (err, result) => {
             if (err){
                 console.error(err.message);
@@ -33,12 +33,12 @@ function getGameTypeById(id){
     });
 }
 
-function putGameType(id, libelle){
+function putRunCat(id, libelle){
     return new Promise((resolve, reject) => {
         const values = [id, libelle]
-        const sql = "UPDATE GAME_TYPES \
-                    SET game_type_libelle =$2\
-                    WHERE game_type_code=$1"
+        const sql = "UPDATE RUN_CATEGORIES \
+                    SET run_category_libelle =$2\
+                    WHERE run_category_code=$1"
         pool.query(sql, values, (err, result) => {
             if (err){
                 console.error(err.message);
@@ -51,7 +51,7 @@ function putGameType(id, libelle){
 }
 
 module.exports ={
-    postGameType,
-    getGameTypeById,
-    putGameType
+    postRunCat,
+    getRunCatById,
+    putRunCat,
 }
