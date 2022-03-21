@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS GAMES (
     PRIMARY KEY (game_code)
 );
 
-CREATE TABLE IF NOt EXISTS RUN_CATEGORIES (
+CREATE TABLE IF NOT EXISTS RUN_CATEGORIES (
     run_category_code SERIAL UNIQUE,
     run_category_libelle VARCHAR(100),
     PRIMARY KEY (run_category_code)

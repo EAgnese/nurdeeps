@@ -20,6 +20,10 @@ header{
     padding: 10px 0 10px 0;
 }
 
+header > a{
+    background-color: black;
+}
+
 
 #search{
     margin-bottom: 20px;
