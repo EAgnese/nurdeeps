@@ -19,6 +19,7 @@ const runsRouter = require('./routes/runs_route');
 const runCatsRouter = require('./routes/run_categories_route');
 const usersRouter = require('./routes/users_route');
 const platformsRouter = require('./routes/platforms_route');
+const containsRunRouter = require('./routes/contains_run_route');
 
 app.use('/api/games', gamesRouter);
 app.use('/api/game_types', gameTypesRouter);
@@ -27,6 +28,7 @@ app.use('/api/runs', runsRouter);
 app.use('/api/run_categories', runCatsRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/platforms', platformsRouter);
+app.use('/api/contains_run', containsRunRouter);
 
 //The 404 Route (ALWAYS Keep this as the last route)
 app.get('*', (req, res) => {
