@@ -42,14 +42,14 @@ body{
     margin: 0;
 }
 
-#games-display, .game-container,#sugestions-display, .suggestion-container  {
+.game-container, .suggestion-container  {
     border: solid 3px;
     border-radius: 20px;
     border-collapse: collapse;
     text-align: center;
 }
 
-#games-display ,#sugestions-display{
+#games-display ,#suggestions-display{
     margin: 25px 15% 25px 15%;
 }
 
