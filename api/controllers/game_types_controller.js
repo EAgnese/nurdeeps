@@ -34,10 +34,22 @@ function update_game_type(req, res) {
     })
 }
 
+function remove_game_type(req, res) {
+    const id = req.params.id;
+    promise = model_suggestions.deleteGameType(id)
+    promise.then((values) => {
+        res.send(values.rows)
+    }).catch((error) => {
+        console.error(error.message)
+    })
+}
+
+
 
 module.exports = {
     add_game_type,
     select_game_type_by_id,
     update_game_type,
+    remove_game_type,
 }
 

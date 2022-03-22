@@ -26,7 +26,7 @@ function update_run_category(req, res) {
     const libelle = req.body.libelle;
     const image = req.body.image;
     const type_code = req.body.type_code;
-    promise = model_games.putGame(id, libelle, image, type_code)
+    promise = model_games.putRunCat(id, libelle)
     promise.then((values) => {
         res.send(values.rows)
     }).catch((error) => {
@@ -34,10 +34,20 @@ function update_run_category(req, res) {
     })
 }
 
+function remove_run_category(req, res) {
+    const id = req.params.id;
+    promise = model_suggestions.deleteRunCat(id)
+    promise.then((values) => {
+        res.send(values.rows)
+    }).catch((error) => {
+        console.error(error.message)
+    })
+}
 
 module.exports = {
     add_run_category,
     select_run_category_by_id,
     update_run_category,
+    remove_run_category,
 }
 

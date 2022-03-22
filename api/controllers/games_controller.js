@@ -65,6 +65,16 @@ function update_game(req, res) {
     })
 }
 
+function remove_game(req, res) {
+    const id = req.params.id;
+    promise = model_suggestions.deleteGame(id)
+    promise.then((values) => {
+        res.send(values.rows)
+    }).catch((error) => {
+        console.error(error.message)
+    })
+}
+
 module.exports = {
     add_game,
     select_game_by_id,
@@ -72,5 +82,6 @@ module.exports = {
     select_games_by_type,
     select_games,
     update_game,
+    remove_game,
 }
 

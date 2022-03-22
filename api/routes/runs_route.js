@@ -9,6 +9,7 @@ router.get("/user/:user", controller_runs.select_runs_by_user);
 router.get("/platform/:plat", controller_runs.select_runs_by_plat);
 router.get("/category/:cat", controller_runs.select_runs_by_cat);
 router.put("/:id/edit", controller_runs.update_run);
+router.delete("/:id/remove", controller_runs.remove_run);
 
 module.exports = router
 

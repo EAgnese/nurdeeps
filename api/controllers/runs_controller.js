@@ -77,6 +77,16 @@ function update_run(req, res) {
     })
 }
 
+function remove_run(req, res) {
+    const id = req.params.id;
+    promise = model_suggestions.deleteRun(id)
+    promise.then((values) => {
+        res.send(values.rows)
+    }).catch((error) => {
+        console.error(error.message)
+    })
+}
+
 module.exports = {
     add_run,
     select_run_by_id,
@@ -85,4 +95,5 @@ module.exports = {
     select_runs_by_cat,
     select_runs,
     update_run,
+    remove_run
 }

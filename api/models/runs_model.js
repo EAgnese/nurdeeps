@@ -110,6 +110,23 @@ function putRun(id, time, category, platform, user){
     });
 }
 
+function deleteRun(id){
+    return new Promise((resolve, reject) => {
+        const values = [id]
+        const sql = "DELETE FROM \
+                    RUNS\
+                    WHERE suggestion_code=$1"
+        pool.query(sql, values, (err, result) => {
+            if (err){
+                console.error(err.message);
+            }
+            else{
+                resolve(result);
+            }
+        });
+    });
+}
+
 module.exports ={
     postRun,
     getRunById,
@@ -118,4 +135,5 @@ module.exports ={
     getRunsByCat,
     getRuns,
     putRun,
+    deleteRun
 }

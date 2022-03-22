@@ -50,8 +50,26 @@ function putGameType(id, libelle){
     });
 }
 
+function deleteGameType(id){
+    return new Promise((resolve, reject) => {
+        const values = [id]
+        const sql = "DELETE FROM \
+                    GAMES\
+                    WHERE suggestion_code=$1"
+        pool.query(sql, values, (err, result) => {
+            if (err){
+                console.error(err.message);
+            }
+            else{
+                resolve(result);
+            }
+        });
+    });
+}
+
 module.exports ={
     postGameType,
     getGameTypeById,
-    putGameType
+    putGameType,
+    deleteGameType
 }

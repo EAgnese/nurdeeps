@@ -45,11 +45,22 @@ function update_suggestion(req, res) {
     })
 }
 
+function remove_suggestion(req, res) {
+    const id = req.params.id;
+    promise = model_suggestions.deleteSuggestion(id)
+    promise.then((values) => {
+        res.send(values.rows)
+    }).catch((error) => {
+        console.error(error.message)
+    })
+}
+
 
 module.exports = {
     add_suggestion,
     select_suggestion_by_id,
     select_suggestions,
     update_suggestion,
+    remove_suggestion
 }
 

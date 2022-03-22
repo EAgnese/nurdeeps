@@ -5,7 +5,7 @@ function postSuggestion( contents, id){
     return new Promise((resolve, reject) => {
         const values = [ contents, id];
         const sql = "INSERT INTO \
-                    GAMES( suggestion_contents, suggetion_point ,user_id)  \
+                    SUGGESTIONS( suggestion_contents, suggetion_point ,user_id)  \
                     VALUES \
                     ($1,0,$2)"
         pool.query(sql, values, (err, result) => {
@@ -22,7 +22,7 @@ function postSuggestion( contents, id){
 function getSuggestionById(id){
     return new Promise((resolve, reject) => {
         const values = [id];
-        const sql = "SELECT * FROM GAMES WHERE suggestion_code = $1"
+        const sql = "SELECT * FROM SUGGESTIONS WHERE suggestion_code = $1"
         pool.query(sql, values, (err, result) => {
             if (err){
                 console.error(err.message);
@@ -36,7 +36,7 @@ function getSuggestionById(id){
 
 function getSuggestions(){
     return new Promise((resolve, reject) => {
-        const sql = "SELECT * FROM suggestion_code"
+        const sql = "SELECT * FROM SUGGESTIONS"
         pool.query(sql, [], (err, result) => {
             if (err){
                 console.error(err.message);
@@ -51,7 +51,7 @@ function getSuggestions(){
 function putSuggestion(id, contents,points, user){
     return new Promise((resolve, reject) => {
         const values = [id, contents,points, user]
-        const sql = "UPDATE GAMES \
+        const sql = "UPDATE SUGGESTIONS \
                     SET suggestion_contents =$2,suggestion_points =$3,user_id =$4\
                     WHERE suggestion_code=$1"
         pool.query(sql, values, (err, result) => {
@@ -65,9 +65,29 @@ function putSuggestion(id, contents,points, user){
     });
 }
 
+function deleteSuggestion(id){
+    return new Promise((resolve, reject) => {
+        const values = [id]
+        const sql = "DELETE FROM \
+                    SUGGESTIONS\
+                    WHERE suggestion_code=$1"
+        pool.query(sql, values, (err, result) => {
+            if (err){
+                console.error(err.message);
+            }
+            else{
+                resolve(result);
+            }
+        });
+    });
+}
+
+
+
 module.exports ={
     postSuggestion,
     getSuggestionById,
     getSuggestions,
     putSuggestion,
+    deleteSuggestion,
 }

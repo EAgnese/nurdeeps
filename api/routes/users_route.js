@@ -8,5 +8,6 @@ router.get("/:id", controller_users.select_user_by_id);
 router.get("/name/:name", controller_users.select_user_by_name);
 router.get("/access/:access", controller_users.select_users_by_access);
 router.put("/:id/edit", controller_users.update_user);
+router.delete("/:id/remove", controller_users.remove_user);
 
 module.exports = router

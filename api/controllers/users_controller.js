@@ -78,6 +78,16 @@ function update_user(req, res) {
     })
 }
 
+function remove_user(req, res) {
+    const id = req.params.id;
+    promise = model_suggestions.deleteUser(id)
+    promise.then((values) => {
+        res.send(values.rows)
+    }).catch((error) => {
+        console.error(error.message)
+    })
+}
+
 module.exports = {
     add_user,
     select_user_by_id,
@@ -86,5 +96,6 @@ module.exports = {
     select_users_by_access,
     select_users,
     update_user,
+    remove_user,
 }
 

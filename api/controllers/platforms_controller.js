@@ -2,7 +2,7 @@ const model_run_categories = require("../models/run_categories_model")
 
 function add_platform(req, res) {
     const libelle = req.body.libelle;
-    const promise = model_run_categories.postRunCat(libelle)
+    const promise = model_run_categories.postPlatform(libelle)
     
     promise.then((values) => {
         res.send(values.rows)
@@ -13,7 +13,7 @@ function add_platform(req, res) {
 
 function select_platform_by_id(req, res) {
     const id = req.params.id;
-    promise = model_run_categories.getRunCatById(id)
+    promise = model_run_categories.getPlatformById(id)
     promise.then((values) => {
         res.send(values.rows)
     }).catch((error) => {
@@ -24,9 +24,17 @@ function select_platform_by_id(req, res) {
 function update_platform(req, res) {
     const id = req.params.id;
     const libelle = req.body.libelle;
-    const image = req.body.image;
-    const type_code = req.body.type_code;
-    promise = model_games.putGame(id, libelle, image, type_code)
+    promise = model_games.putPlatform(id, libelle)
+    promise.then((values) => {
+        res.send(values.rows)
+    }).catch((error) => {
+        console.error(error.message)
+    })
+}
+
+function remove_platform(req, res) {
+    const id = req.params.id;
+    promise = model_suggestions.deletePlatform(id)
     promise.then((values) => {
         res.send(values.rows)
     }).catch((error) => {
@@ -39,5 +47,6 @@ module.exports = {
     add_platform,
     select_platform_by_id,
     update_platform,
+    remove_platform,
 }
 
