@@ -26,7 +26,7 @@ function update_game_type(req, res) {
     const libelle = req.body.libelle;
     const image = req.body.image;
     const type_code = req.body.type_code;
-    promise = model_games.putGame(id, libelle, image, type_code)
+    promise = model_game_type.putGame(id, libelle, image, type_code)
     promise.then((values) => {
         res.send(values.rows)
     }).catch((error) => {
@@ -36,7 +36,7 @@ function update_game_type(req, res) {
 
 function remove_game_type(req, res) {
     const id = req.params.id;
-    promise = model_suggestions.deleteGameType(id)
+    promise = model_game_type.deleteGameType(id)
     promise.then((values) => {
         res.send(values.rows)
     }).catch((error) => {

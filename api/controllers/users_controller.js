@@ -1,4 +1,3 @@
-const { access } = require("fs");
 const model_users = require("../models/users_model")
 
 function add_user(req, res) {
@@ -80,7 +79,7 @@ function update_user(req, res) {
 
 function remove_user(req, res) {
     const id = req.params.id;
-    promise = model_suggestions.deleteUser(id)
+    promise = model_users.deleteUser(id)
     promise.then((values) => {
         res.send(values.rows)
     }).catch((error) => {

@@ -1,11 +1,11 @@
-const model_games = require("../models/games_model")
+const model_runs = require("../models/runs_model")
 
 function add_run(req, res) {
     const time = req.body.time;
     const category = req.body.category;
     const platform = req.body.platform;
     const user_id = req.body.user_id;
-    const promise = model_games.postRun(time, category, platform, user_id)
+    const promise = model_runs.postRun(time, category, platform, user_id)
     
     promise.then((values) => {
         res.send(values.rows)
@@ -16,7 +16,7 @@ function add_run(req, res) {
 
 function select_run_by_id(req, res) {
     const id = req.params.id;
-    promise = model_games.getRunById(id)
+    promise = model_runs.getRunById(id)
     promise.then((values) => {
         res.send(values.rows)
     }).catch((error) => {
@@ -26,7 +26,7 @@ function select_run_by_id(req, res) {
 
 function select_runs_by_user(req, res) {
     const user = req.params.user;
-    promise = model_games.getRunsByUser(user)
+    promise = model_runs.getRunsByUser(user)
     promise.then((values) => {
         res.send(values.rows)
     }).catch((error) => {
@@ -36,7 +36,7 @@ function select_runs_by_user(req, res) {
 
 function select_runs_by_plat(req, res) {
     const plat = req.params.plat;
-    promise = model_games.getRunsByPlat(plat)
+    promise = model_runs.getRunsByPlat(plat)
     promise.then((values) => {
         res.send(values.rows)
     }).catch((error) => {
@@ -46,7 +46,7 @@ function select_runs_by_plat(req, res) {
 
 function select_runs_by_cat(req, res) {
     const cat = req.params.cat;
-    promise = model_games.getRunsByCat(cat)
+    promise = model_runs.getRunsByCat(cat)
     promise.then((values) => {
         res.send(values.rows)
     }).catch((error) => {
@@ -55,7 +55,7 @@ function select_runs_by_cat(req, res) {
 }
 
 function select_runs(req, res) {
-    promise = model_games.getRuns()
+    promise = model_runs.getRuns()
     promise.then((values) => {
         res.send(values.rows)
     }).catch((error) => {
@@ -69,7 +69,7 @@ function update_run(req, res) {
     const category = req.body.category;
     const platform = req.body.platform;
     const user_id = req.body.user_id;
-    promise = model_games.putRun(id, time, category, platform, user_id)
+    promise = model_runs.putRun(id, time, category, platform, user_id)
     promise.then((values) => {
         res.send(values.rows)
     }).catch((error) => {
@@ -79,7 +79,7 @@ function update_run(req, res) {
 
 function remove_run(req, res) {
     const id = req.params.id;
-    promise = model_suggestions.deleteRun(id)
+    promise = model_runs.deleteRun(id)
     promise.then((values) => {
         res.send(values.rows)
     }).catch((error) => {
