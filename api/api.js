@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 
 const gamesRouter = require('./routes/games_route');
 const gameTypesRouter = require('./routes/game_types_route');
-const suggestionsRouter = require('./api/routes/suggestions_route');
+const suggestionsRouter = require('./routes/suggestions_route');
 const runsRouter = require('./routes/runs_route');
 const runCatsRouter = require('./routes/run_categories_route');
 const usersRouter = require('./routes/users_route');

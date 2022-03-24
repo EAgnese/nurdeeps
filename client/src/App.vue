@@ -40,16 +40,23 @@ hr{
 }
 
 header{
-    background-color: black;
-    margin: 0 0 20px 0px;
-    text-align: center;
-    width: 100%;
-    top : 0;
-    font-size: 30px;
-    padding: 10px 0 10px 0;
+  background-color: black;
+  margin: 0 0 20px 0px;
+  text-align: center;
+  width: 100%;
+  top : 0;
+  font-size: 30px;
+  padding: 10px 0 10px 0;   
 }
 
-header > router-link{
+header > a{
   background-color: black;
+  border: solid 3px;
+  border-radius: 2px;
+  padding: 0 2px 0 2px;
+  border-collapse: collapse;
+  text-align: center;
+  user-select: none;
+  text-decoration: none;
 }
 </style>

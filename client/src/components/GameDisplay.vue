@@ -45,7 +45,7 @@ export default ({
             })
         })
 
-      fetch(this.url(), {
+      fetch(this.url, {
           method: "GET",
       }).then( (rep) =>{
           rep.json().then((data)=>{
@@ -55,3 +55,34 @@ export default ({
     },
 })
 </script>
+
+<style>
+#search{
+    margin-bottom: 20px;
+    background-color: rgb(228, 228, 228);
+    color: #797106;
+    font-size: 15px;
+}
+
+#app{
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.game-container{
+    border: solid 3px;
+    border-radius: 20px;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+#games-display {
+    margin: 25px 15% 25px 15%;
+}
+
+.game-container {
+    padding: 5px;
+    font-size: 20px;
+}
+</style>
