@@ -1,4 +1,14 @@
-app.component('games-display',{
+<template>
+    <div class="game-container" v-show="isShowed">
+          <div class="game-name"> {{this.game.game_libelle}}</div>
+          <div class="game-image"> {{this.game.game_image}} </div>
+          <div class="game-types"> {{this.game_type_libelle}} </div>
+    </div>
+</template>
+
+<script>
+export default ({
+    name: "games-display",
     
     data(){
       return {
@@ -20,6 +30,9 @@ app.component('games-display',{
     computed:{
         isShowed(){
           return this.game.game_libelle.toLowerCase().includes(this.input.toLowerCase()) 
+        },
+        url(){
+          return "http://localhost:8000/api/game_types/"+this.game.game_type_code
         }
     },
 
@@ -32,8 +45,7 @@ app.component('games-display',{
             })
         })
 
-      url="http://localhost:8000/api/game_types/"+this.game.game_type_code
-      fetch(url, {
+      fetch(this.url(), {
           method: "GET",
       }).then( (rep) =>{
           rep.json().then((data)=>{
@@ -41,14 +53,5 @@ app.component('games-display',{
           })
       })
     },
-
-    template:
-    /*html*/
-    `
-      <div class="game-container" v-show="isShowed">
-          <div class="game-name"> {{this.game.game_libelle}}</div>
-          <div class="game-image"> {{this.game.game_image}} </div>
-          <div class="game-types"> {{this.game_type_libelle}} </div>
-      </div>
-    `,
 })
+</script>

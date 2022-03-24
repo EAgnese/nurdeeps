@@ -1,15 +1,14 @@
-import VueRouter from 'vue-router'
+import { createWebHistory, createRouter} from 'vue-router'
 
-const Home = { template: '<div>Home</div>' }
-const About = { template: '<div>About</div>' }
+
 
 const routes = [
-  { path: '/', component: Home },
-  { path: '/about', component: About },
+  { path: '/games', component: () => import("./components/GamesComponent") },
+  { path: '/suggestions', component: () => import("./components/GamesComponent") },
 ]
 
-const router = VueRouter.createRouter({
-  history: VueRouter.createWebHashHistory(),
+const router = createRouter({
+  history: createWebHistory(),
   routes, // short for `routes: routes`
 })
 
