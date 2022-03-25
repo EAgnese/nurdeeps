@@ -31,21 +31,11 @@ export default ({
         isShowed(){
           return this.game.game_libelle.toLowerCase().includes(this.input.toLowerCase()) 
         },
-        url(){
-          return "http://localhost:8000/api/game_types/"+this.game.game_type_code
-        }
     },
 
     created(){
-      fetch("http://localhost:8000/api/games", {
-            method: "GET",
-        }).then( (rep) =>{
-            rep.json().then((data)=>{
-                this.list = data;
-            })
-        })
-
-      fetch(this.url, {
+      const url = "http://localhost:8000/api/game_types/"+this.game.game_type_code
+      fetch(url, {
           method: "GET",
       }).then( (rep) =>{
           rep.json().then((data)=>{
