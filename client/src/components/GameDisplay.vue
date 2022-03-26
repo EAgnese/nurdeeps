@@ -65,14 +65,18 @@ export default ({
     border-radius: 20px;
     border-collapse: collapse;
     text-align: center;
+    cursor:pointer;
+    padding: 5px;
+    font-size: 20px;
 }
 
 #games-display {
     margin: 25px 15% 25px 15%;
+    
 }
 
-.game-container {
-    padding: 5px;
-    font-size: 20px;
+.game-container, .game-name, .game-image , .game-types {
+    
+    background-color: #301B59;
 }
 </style>

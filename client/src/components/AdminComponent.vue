@@ -207,6 +207,8 @@ table, th, td{
     border: solid;
     border-collapse: collapse;
     padding: 2px;
+    background-color: #301B59;
+    text-align: center;
 }
 
 </style>

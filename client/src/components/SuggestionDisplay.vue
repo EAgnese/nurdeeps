@@ -73,15 +73,12 @@ export default ({
     border: solid 3px;
     border-radius: 20px;
     border-collapse: collapse;
+    padding: 5px;
+    font-size: 20px;
 }
 
 #suggestions-display{
     margin: 25px 15% 25px 15%;
-}
-
-.suggestion-container {
-    padding: 5px;
-    font-size: 20px;
 }
 
 .suggestion-user{
@@ -105,5 +102,10 @@ export default ({
 .suggestion-down, .suggestion-up{
     user-select: none;
     cursor: pointer;
+}
+    
+.suggestion-container, .suggestion-user, .suggestion-down, .suggestion-up, .suggestion-num, .suggestion-contents{
+    
+    background-color: #301B59;
 }
 </style>
