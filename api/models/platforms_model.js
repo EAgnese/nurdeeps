@@ -18,6 +18,20 @@ function postPlatform( run_category_libelle){
     });
 }
 
+function getPlatforms(){
+    return new Promise((resolve, reject) => {
+        const sql = "SELECT * FROM PLATFORMS"
+        pool.query(sql, values, (err, result) => {
+            if (err){
+                console.error(err.message);
+            }
+            else{
+                resolve(result);
+            }
+        });
+    });
+}
+
 function getPlatformById(id){
     return new Promise((resolve, reject) => {
         const values = [id];
@@ -69,6 +83,7 @@ function deletePlatform(id){
 
 module.exports ={
     postPlatform,
+    getPlatforms,
     getPlatformById,
     putPlatform,
     deletePlatform

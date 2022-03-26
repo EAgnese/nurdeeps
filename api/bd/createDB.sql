@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS USERS (
     user_mail VARCHAR(100),
     user_password VARCHAR(100),
     user_points INT,
-    user_access INT,
+    user_access BOOLEAN,
     PRIMARY KEY (user_id)
 );
 

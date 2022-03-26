@@ -11,6 +11,15 @@ function add_platform(req, res) {
     })
 }
 
+function select_platforms(req, res) {
+    promise = model_platforms.getPlatforms()
+    promise.then((values) => {
+        res.send(values.rows)
+    }).catch((error) => {
+        console.error(error.message)
+    })
+}
+
 function select_platform_by_id(req, res) {
     const id = req.params.id;
     promise = model_platforms.getPlatformById(id)
@@ -45,6 +54,7 @@ function remove_platform(req, res) {
 
 module.exports = {
     add_platform,
+    select_platforms,
     select_platform_by_id,
     update_platform,
     remove_platform,
