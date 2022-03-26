@@ -87,4 +87,29 @@ p {
   text-align: center;
 }
 
+@media (max-width: 800px) {
+  #admin{
+    margin-left: 0px;
+    float: none;
+  }
+
+  #login{
+    margin-right: 0px;
+    float: none;
+  }
+
+  header > a{
+    background-color: black;
+    border: solid 3px;
+    border-radius: 2px;
+    padding: 0 2px 0 2px;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 20px;
+    user-select: none;
+    text-decoration: none;
+    display:grid;
+  }
+}
+
 </style>
