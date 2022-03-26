@@ -7,6 +7,9 @@
       <router-link to="/login" id="login">Login</router-link>
     </header>
   <router-view></router-view>
+    <footer>
+      dévelopé par Eri AGNESE
+    </footer>
 </template>
 
 <script>
@@ -42,12 +45,20 @@ hr{
 }
 
 header{
-  background-color: black;
-  margin: 0 0 20px 0px;
-  text-align: center;
-  width: 100%;
   top : 0;
   font-size: 30px;
+  margin: 0 0 20px 0px;
+}
+
+footer {
+  bottom : 0;
+  margin: 20px 0 0px 0px;
+}
+
+header, footer{
+  background-color: black;
+  text-align: center;
+  width: 100%;
   padding: 10px 0 10px 0;   
 }
 
