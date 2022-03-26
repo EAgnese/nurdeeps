@@ -18,6 +18,20 @@ function postRunCat( run_category_libelle){
     });
 }
 
+function getRunCats(){
+    return new Promise((resolve, reject) => {
+        const sql = "SELECT * FROM RUN_CATEGORIES"
+        pool.query(sql, [], (err, result) => {
+            if (err){
+                console.error(err.message);
+            }
+            else{
+                resolve(result);
+            }
+        });
+    });
+}
+
 function getRunCatById(id){
     return new Promise((resolve, reject) => {
         const values = [id];
@@ -69,6 +83,7 @@ function deleteRunCat(id){
 
 module.exports ={
     postRunCat,
+    getRunCats,
     getRunCatById,
     putRunCat,
     deleteRunCat

@@ -11,6 +11,15 @@ function add_run_category(req, res) {
     })
 }
 
+function select_run_categories(req, res) {
+    promise = model_run_categories.getRunCats()
+    promise.then((values) => {
+        res.send(values.rows)
+    }).catch((error) => {
+        console.error(error.message)
+    })
+}
+
 function select_run_category_by_id(req, res) {
     const id = req.params.id;
     promise = model_run_categories.getRunCatById(id)
@@ -46,6 +55,7 @@ function remove_run_category(req, res) {
 
 module.exports = {
     add_run_category,
+    select_run_categories,
     select_run_category_by_id,
     update_run_category,
     remove_run_category,

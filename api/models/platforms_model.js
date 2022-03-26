@@ -21,7 +21,7 @@ function postPlatform( run_category_libelle){
 function getPlatforms(){
     return new Promise((resolve, reject) => {
         const sql = "SELECT * FROM PLATFORMS"
-        pool.query(sql, values, (err, result) => {
+        pool.query(sql, [], (err, result) => {
             if (err){
                 console.error(err.message);
             }

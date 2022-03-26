@@ -21,7 +21,7 @@ function postGameType( game_type_libelle){
 function getGameTypes(){
     return new Promise((resolve, reject) => {
         const sql = "SELECT * FROM GAME_TYPES"
-        pool.query(sql, values, (err, result) => {
+        pool.query(sql, [], (err, result) => {
             if (err){
                 console.error(err.message);
             }
