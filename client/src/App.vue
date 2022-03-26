@@ -1,8 +1,10 @@
 <template>
     <header>
       Nurspeed<hr>
+      <router-link to="/admin" id="admin">Admin</router-link>
       <router-link to="/games">Games</router-link>
       <router-link to="/suggestions">Suggestions</router-link>
+      <router-link to="/login" id="login">Login</router-link>
     </header>
   <router-view></router-view>
 </template>
@@ -59,4 +61,19 @@ header > a{
   user-select: none;
   text-decoration: none;
 }
+
+#admin{
+  margin-left: 15px;
+  float: left;
+}
+
+#login{
+  margin-right: 15px;
+  float: right;
+}
+
+p {
+  text-align: center;
+}
+
 </style>
