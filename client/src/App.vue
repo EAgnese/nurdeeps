@@ -87,7 +87,7 @@ p {
   text-align: center;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 600px) {
   #admin{
     margin-left: 0px;
     float: none;
@@ -111,5 +111,12 @@ p {
     display:grid;
   }
 }
+  footer{
+    font-size: 20px;
+  }
+
+  hr{
+    display: none;
+  }
 
 </style>
