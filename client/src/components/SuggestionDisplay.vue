@@ -108,4 +108,10 @@ export default ({
     
     background-color: #301B59;
 }
+
+@media (max-width: 600px) {
+  #suggestions-display {
+    margin: 25px 1px 25px 1px;    
+  }
+}
 </style>

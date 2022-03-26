@@ -119,4 +119,11 @@ p {
     display: none;
   }
 
+@media (min-width: 600px) {
+  hr{
+    display:inherit;
+  } 
+}
+
+
 </style>
