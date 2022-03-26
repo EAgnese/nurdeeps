@@ -36,7 +36,7 @@ function getSuggestionById(id){
 
 function getSuggestions(){
     return new Promise((resolve, reject) => {
-        const sql = "SELECT * FROM SUGGESTIONS"
+        const sql = "SELECT * FROM SUGGESTIONS ORDER BY suggestion_points"
         pool.query(sql, [], (err, result) => {
             if (err){
                 console.error(err.message);
