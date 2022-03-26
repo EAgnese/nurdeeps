@@ -11,6 +11,16 @@ function add_game_type(req, res) {
     })
 }
 
+function select_game_types(req, res) {
+    const id = req.params.id;
+    promise = model_game_type.getGameTypes()
+    promise.then((values) => {
+        res.send(values.rows)
+    }).catch((error) => {
+        console.error(error.message)
+    })
+}
+
 function select_game_type_by_id(req, res) {
     const id = req.params.id;
     promise = model_game_type.getGameTypeById(id)
@@ -48,6 +58,7 @@ function remove_game_type(req, res) {
 
 module.exports = {
     add_game_type,
+    select_game_types,
     select_game_type_by_id,
     update_game_type,
     remove_game_type,
