@@ -2,29 +2,67 @@
   <form>
       <legend>Sign in</legend>
       <label> Username:</label>
-      <input required>
+      <input id="name" required>
       <label> Password:</label>
-      <input type="password" required><br>
-      <input type="submit">
+      <input type="password" id="password" required><br>
+      <input type="button" @click="signIn" value="Envoyer" to="/index">
   </form>
       
   <form>
       <legend>Sign up</legend>
       <label> Mail:</label>
-      <input >
+      <input id="new_mail">
       <label> Username:</label>
-      <input required>
+      <input id="new_name" required>
       <label> Password:</label>
-      <input type="password" required>
+      <input type="password" id="new_password" required>
       <label> Confirm Password:</label>
-      <input type="password" required> <br>
-      <input type="submit"> 
+      <input type="password" id="confirm_password" required> <br>
+      <input type="button" @click="signUp" value="Envoyer" to="/index">
 
   </form>
 </template>
 
 <script>
 export default {
+
+    methods: {
+        signUp(){
+            if (!(document.getElementById('confirm_password').value == document.getElementById('new_password').value)){
+                window.alert("must be same password")
+                return
+            }
+            if ((document.getElementById('confirm_password').value == "")  || (document.getElementById('new_password').value == "") || (document.getElementById('new_name').value == "")) {
+                window.alert("must fill all input")
+            }
+            fetch("http://localhost:8000/api/users/", {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name :document.getElementById('new_name').value,
+                    mail: document.getElementById('new_mail').value,
+                    password: document.getElementById('new_password').value,
+                })
+            }).then( (res) =>{
+                this.$emit('connect',res.cookie["user"])
+                this.$router.push({path:'/games'})
+            })
+        },
+        signIn(){
+            fetch("http://localhost:8000/api/users/login", {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name :document.getElementById('name').value,
+                    password: document.getElementById('password').value,
+                })
+            }).then( (res) =>{
+                this.$emit('connect', res)
+                this.$router.push({path:'/games'})
+            })
+
+        }
+    }
 
 }
 </script>
@@ -58,7 +96,7 @@ input{
     font-size: 15px;
     margin: 2px;
 }
-input[type=submit]{
+input[type=button]{
     color : #F2E83A;
     background-color:#231442;
 }

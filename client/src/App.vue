@@ -1,12 +1,13 @@
 <template>
     <header>
       Nurspeed<hr>
-      <router-link to="/admin" id="admin">Admin</router-link>
+      <router-link to="/admin" id="admin" v-if="this.isAdmin">Admin</router-link>
       <router-link to="/games">Games</router-link>
       <router-link to="/suggestions">Suggestions</router-link>
-      <router-link to="/login" id="login">Login</router-link>
+      <router-link to="/login" class="login" v-if="this.isShowed">Login</router-link>
+      <div class="login" v-if="!this.isShowed" @click="disconnect">Disconnect</div>
     </header>
-  <router-view></router-view>
+  <router-view @connect="connection(cookie)"></router-view>
     <footer>
       dévelopé par Eri AGNESE
     </footer>
@@ -17,6 +18,23 @@
 export default {
   name: 'App',
   components: {
+  },
+
+  data(){
+    return{
+      isShowed : true,
+      isAdmin : false
+    }
+  },
+  methods: {
+    connection(cookie){
+      this.isShowed = false
+      this.isAdmin = cookie.isAdmin
+    },
+    disconnect(){
+      this.isShowed = true
+      this.isAdmin = false
+    }
   }
 }
 </script>
@@ -62,7 +80,7 @@ header, footer{
   padding: 10px 0 10px 0;   
 }
 
-header > a{
+header > a, .login{
   background-color: black;
   border: solid 3px;
   border-radius: 2px;
@@ -71,6 +89,7 @@ header > a{
   text-align: center;
   user-select: none;
   text-decoration: none;
+  cursor: pointer;
 }
 
 #admin{
@@ -78,7 +97,7 @@ header > a{
   float: left;
 }
 
-#login{
+.login{
   margin-right: 15px;
   float: right;
 }
