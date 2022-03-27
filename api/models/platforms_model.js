@@ -35,7 +35,7 @@ function getPlatforms(){
 function getPlatformById(id){
     return new Promise((resolve, reject) => {
         const values = [id];
-        const sql = "SELECT * FROM PLATFORMS WHERE platform_libelle = $1"
+        const sql = "SELECT * FROM PLATFORMS WHERE platform_code = $1"
         pool.query(sql, values, (err, result) => {
             if (err){
                 console.error(err.message);
