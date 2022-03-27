@@ -1,5 +1,5 @@
-INSERT INTO USERS(user_name, user_mail, user_password, user_point, user_access) VALUES ('admin','admin@admin.com','admin123',0,TRUE)
-INSERT INTO USERS(user_name, user_mail, user_password, user_point, user_access) VALUES ('test','test@test.com','test123',0,FALSE)
+INSERT INTO USERS(user_name, user_mail, user_password, user_point, user_access) VALUES ('admin','admin@admin.com','admin123',0,1)
+INSERT INTO USERS(user_name, user_mail, user_password, user_point, user_access) VALUES ('test','test@test.com','test123',0,0)
 
 INSERT INTO GAME_TYPES(game_type_libelle)  VALUES ('Souls-like');
 INSERT INTO GAME_TYPES(game_type_libelle)  VALUES ('Platformer');
