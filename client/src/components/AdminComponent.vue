@@ -60,6 +60,7 @@
                     <th>Id</th>
                     <th>Time</th>
                     <th>Run category</th>
+                    <th>Game</th>
                     <th>Platform</th>
                     <th>User</th>
                 </tr>
@@ -69,8 +70,9 @@
                     <td>{{run.run_code}}</td>
                     <td>{{run.run_time}}</td>
                     <td>{{run.run_category_code}}</td>
-                    <td>{{run.run_platform}}</td>
-                    <td>{{run.run_user_id}}</td>
+                    <td>{{run.game_code}}</td>
+                    <td>{{run.platform_code}}</td>
+                    <td>{{run.user_id}}</td>
                 </tr>
             </tbody>
         </table>
