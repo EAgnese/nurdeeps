@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS RUNS (
     run_code SERIAL UNIQUE,
     run_time TIME,
     /*#foreign keys*/
+    game_code INT,
     run_category_code INT,
     platform_code INT,
     user_id INT,
@@ -60,7 +61,7 @@ CREATE TABLE IF NOT EXISTS CONTAINS_RUN (
     PRIMARY KEY (run_category_code, game_code)
 );
 
-
+ALTER TABLE RUNS ADD FOREIGN KEY (game_code) REFERENCES GAMES (game_code);
 ALTER TABLE RUNS ADD FOREIGN KEY (run_category_code) REFERENCES RUN_CATEGORIES (run_category_code);
 ALTER TABLE RUNS ADD FOREIGN KEY (platform_code) REFERENCES PLATFORMS (platform_code);
 ALTER TABLE RUNS ADD FOREIGN KEY (user_id) REFERENCES USERS (user_id);
