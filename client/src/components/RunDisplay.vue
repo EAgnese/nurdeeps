@@ -1,0 +1,64 @@
+<template>
+    <div class="run-container">
+          <div class="run-time"> {{this.run.run_time}}</div>
+          <div class="run-cat"> {{this.run_category}} </div>
+          <div class="run-platform"> {{this.platform_libelle}} </div>
+          <div class="run-user"> {{this.user}} </div>
+    </div>
+</template>
+
+<script>
+
+
+export default {
+    data(){
+        return {
+            run_category:"",
+            platform_libelle:"",
+            user:""
+        }
+    },
+    
+    props:{
+        run:{
+            type: Object,
+            required: true
+        },
+    },
+
+
+    created(){
+        const urlPlat = "http://localhost:8000/api/platforms/"+this.run.platform_code
+        fetch(urlPlat, {
+            method: "GET",
+        }).then( (rep) =>{
+            rep.json().then((data)=>{
+                
+                this.platform_libelle = data[0].platform_libelle;
+          })
+        })
+
+        const urlUser = "http://localhost:8000/api/users/"+this.run.user_id
+        fetch(urlUser, {
+            method: "GET",
+        }).then( (rep) =>{
+            rep.json().then((data)=>{
+                this.user = data[0].user_name;
+          })
+        })
+
+        const urlCat = "http://localhost:8000/api/run_categories/"+this.run.run_category_code
+        fetch(urlCat, {
+            method: "GET",
+        }).then( (rep) =>{
+            rep.json().then((data)=>{
+                this.run_category = data[0].run_category_libelle;
+          })
+        })
+    },
+}
+</script>
+
+<style>
+
+</style>

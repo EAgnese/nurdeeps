@@ -3,12 +3,12 @@
           <div class="game-name"> {{this.game.game_libelle}}</div>
           <div class="game-image"> {{this.game.game_image}} </div>
           <div class="game-types"> {{this.game_type_libelle}} </div>
+          <router-link :to="'/games/' + this.game.game_code">See runs</router-link>
     </div>
 </template>
 
 <script>
 export default ({
-    name: "games-display",
     
     data(){
       return {
