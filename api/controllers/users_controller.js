@@ -8,13 +8,13 @@ function logIn(req, res){
         if (!values) {
             res.status(404).render("error");
         }else {
-            console.log(values)
             const passwordisvalid = bcrypt.compareSync(req.body.password,values.rows[0].user_password)
             if (!passwordisvalid) {
                 res.status(401).render("error");
             }else {
                 const token = auth.generateTokenForUser(values.rows[0].user_id)
                 res.cookie("user",token,{httpOnly : false}).send()
+                console.log("Log in")
             }
         }
     }) 
