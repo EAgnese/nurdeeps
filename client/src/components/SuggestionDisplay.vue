@@ -47,7 +47,6 @@ export default ({
                     user: this.suggestion.user_id,
                 })
             }).then( () =>{
-                console.log(this.suggestion)
                 this.points += 1 
                 console.log(this.suggestion.suggestion_points+1)
             })
