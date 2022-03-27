@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="games">
         Games <br>
         <input id="search" v-model="input">
         <div id="games-display">
@@ -42,3 +42,13 @@ export default ({
 })
 
 </script>
+<style>
+    #games-display {
+        margin: 25px 15% 25px 15%;   
+    }
+    @media (max-width: 600px) {
+    #games-display {
+        margin: 25px 1px 25px 1px;    
+    }
+    }
+</style>

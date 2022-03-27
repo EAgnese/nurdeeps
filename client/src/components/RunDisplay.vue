@@ -61,4 +61,20 @@ export default {
 
 <style>
 
+
+.run-container{
+    border: solid 3px;
+    border-radius: 20px;
+    border-collapse: collapse;
+    text-align: center;
+    cursor:pointer;
+    padding: 5px;
+    font-size: 20px;
+}
+
+
+.run-container, .run-time, .run-cat , .run-platform,.run-user {    
+    background-color: #301B59;
+}
+
 </style>

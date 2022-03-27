@@ -70,17 +70,11 @@ export default ({
     font-size: 20px;
 }
 
-#games-display {
-    margin: 25px 15% 25px 15%;   
-}
+
 
 .game-container, .game-name, .game-image , .game-types {    
     background-color: #301B59;
 }
 
-@media (max-width: 600px) {
-  #games-display {
-    margin: 25px 1px 25px 1px;    
-  }
-}
+
 </style>

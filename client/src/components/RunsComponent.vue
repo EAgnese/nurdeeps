@@ -39,5 +39,12 @@ export default {
 </script>
 
 <style>
-
+#runs-display {
+    margin: 25px 15% 25px 15%;   
+}
+@media (max-width: 600px) {
+  #runs-display {
+    margin: 25px 1px 25px 1px;    
+  }
+}
 </style>
