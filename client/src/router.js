@@ -7,7 +7,7 @@ const routes = [
   { path: '/admin', component: () => import("./components/AdminComponent") },
   { path: '/login', component: () => import("./components/LoginComponent") },
   { path: '/games', component: () => import("./components/GamesComponent") },
-  { path: '/games:id', component: () => import("./components/GamesComponent") },
+  { path: '/games/:id(\\d+)', component: () => import("./components/RunsComponent") },
   { path: '/suggestions', component: () => import("./components/SuggestionsComponent") },
 ]
 
