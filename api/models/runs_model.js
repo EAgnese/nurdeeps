@@ -1,13 +1,13 @@
 const pool = require("../bd/bd");
 
 //post a game with the values of the request
-function postRun( time, cat, plat, user){
+function postRun( time,cat, game, plat, user){
     return new Promise((resolve, reject) => {
-        const values = [ time, cat, plat, user];
+        const values = [ time,cat, game, plat, user];
         const sql = "INSERT INTO \
-                    RUNS(run_time, run_category_code, platform_code, user_id)  \
+                    RUNS(run_time,run_category_code, game_code, platform_code, user_id)  \
                     VALUES \
-                    ($1,$2,$3,$4)"
+                    ($1,$2,$3,$4,$5)"
         pool.query(sql, values, (err, result) => {
             if (err){
                 console.error(err.message);
@@ -64,10 +64,10 @@ function getRunsByPlat(plat){
     });
 }
 
-function getRunsByCat(cat){
+function getRunsByGame(cat){
     return new Promise((resolve, reject) => {
         const values = [cat];
-        const sql = "SELECT * FROM RUNS WHERE run_category_code = $1"
+        const sql = "SELECT * FROM RUNS WHERE game_code = $1"
         pool.query(sql, values, (err, result) => {
             if (err){
                 console.error(err.message);
@@ -93,11 +93,11 @@ function getRuns(){
     });
 }
 
-function putRun(id, time, category, platform, user){
+function putRun(id, time, category, game, platform, user){
     return new Promise((resolve, reject) => {
-        const values = [id, time, category, platform, user]
+        const values = [id, time, category, game, platform, user]
         const sql = "UPDATE RUNS \
-                    SET run_time =$2,run_category_code =$3,platform_code =$4,user_id =$5\
+                    SET run_time =$2,run_category_code =$3,game_code=$4,platform_code =$5,user_id =$6\
                     WHERE run_code=$1"
         pool.query(sql, values, (err, result) => {
             if (err){
@@ -132,7 +132,7 @@ module.exports ={
     getRunById,
     getRunsByUser,
     getRunsByPlat,
-    getRunsByCat,
+    getRunsByGame,
     getRuns,
     putRun,
     deleteRun

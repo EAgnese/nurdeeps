@@ -2,10 +2,11 @@ const model_runs = require("../models/runs_model")
 
 function add_run(req, res) {
     const time = req.body.time;
+    const game = req.body.game;
     const category = req.body.category;
     const platform = req.body.platform;
     const user_id = req.body.user_id;
-    const promise = model_runs.postRun(time, category, platform, user_id)
+    const promise = model_runs.postRun(time, category,game, platform, user_id)
     
     promise.then((values) => {
         res.send(values.rows)
@@ -44,9 +45,9 @@ function select_runs_by_plat(req, res) {
     })
 }
 
-function select_runs_by_cat(req, res) {
+function select_runs_by_game(req, res) {
     const cat = req.params.cat;
-    promise = model_runs.getRunsByCat(cat)
+    promise = model_runs.getRunsByGame(cat)
     promise.then((values) => {
         res.send(values.rows)
     }).catch((error) => {
@@ -66,10 +67,11 @@ function select_runs(req, res) {
 function update_run(req, res) {
     const id = req.params.id;
     const time = req.body.time;
+    const game = req.body.game;
     const category = req.body.category;
     const platform = req.body.platform;
     const user_id = req.body.user_id;
-    promise = model_runs.putRun(id, time, category, platform, user_id)
+    promise = model_runs.putRun(id,time, category,game, platform, user_id)
     promise.then((values) => {
         res.send(values.rows)
     }).catch((error) => {
@@ -92,7 +94,7 @@ module.exports = {
     select_run_by_id,
     select_runs_by_user,
     select_runs_by_plat,
-    select_runs_by_cat,
+    select_runs_by_game,
     select_runs,
     update_run,
     remove_run
