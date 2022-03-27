@@ -3,9 +3,9 @@
         <div class="suggestion-contents"> {{this.suggestion.suggestion_contents}}</div>
         <div class="suggestion-user"> {{this.user_name}} </div>
         <div class="suggestion-points">
-            <div class="suggestion-down" @click="downPoints">↑</div>
+            <div class="suggestion-up" @click.left.once="upPoints">↑</div>
             <div class="suggestion-num"> {{this.points}} </div>
-            <div class="suggestion-up" @click="upPoints">↓</div>
+            <div class="suggestion-down" @click.left.once="downPoints">↓</div>
         </div>
     </div>
 </template>
@@ -16,7 +16,7 @@ export default ({
     data(){
       return {
         user_name:"",
-        points: this.suggestion.suggestion_points
+        points : this.suggestion.suggestion_points
       }
     },
     props:{
@@ -33,33 +33,35 @@ export default ({
             rep.json().then((data)=>{
                 this.user_name = data[0].user_name;
             })
-      })
+        })
     },
-    method:{
+    methods:{
         upPoints(){
-            console.log("+1")
-            const urlEdit = "http://localhost:8000/api/suggestions/"+this.suggestion.suggestion_code+"/edit"
+            const urlEdit = "http://localhost:8000/api/suggestions/"+this.suggestion.suggestion_code
             fetch(urlEdit, {
                 method: "PUT",
-                body:{
-                    suggestion_contents :this.suggestion.suggestion_contents,
-                    suggestion_points: this.suggestion.suggestion_points + 1,
-                    user_id: this.suggestion.user_id,
-                }
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    contents :this.suggestion.suggestion_contents,
+                    points: this.suggestion.suggestion_points + 1,
+                    user: this.suggestion.user_id,
+                })
             }).then( () =>{
+                console.log(this.suggestion)
                 this.points += 1 
+                console.log(this.suggestion.suggestion_points+1)
             })
         },
         downPoints(){
-            console.log("-1")
-            const urlEdit = "http://localhost:8000/api/suggestions/"+this.suggestion.suggestion_code+"/edit"
+            const urlEdit = "http://localhost:8000/api/suggestions/"+this.suggestion.suggestion_code
             fetch(urlEdit, {
                 method: "PUT",
-                body:{
-                    suggestion_contents :this.suggestion.suggestion_contents,
-                    suggestion_points: this.suggestion.suggestion_points -1,
-                    user_id: this.suggestion.user_id,
-                }
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    contents :this.suggestion.suggestion_contents,
+                    points: this.suggestion.suggestion_points -1,
+                    user: this.suggestion.user_id,
+                })
             }).then( () =>{
                 this.points -= 1 
             })
