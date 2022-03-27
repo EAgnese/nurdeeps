@@ -1,9 +1,29 @@
 const model_users = require("../models/users_model")
+const bcrypt = require("bcryptjs")
+const auth = require("../token.js");
+
+
+function logIn(req, res){
+    model_users.getUserByName(req.body.name).then((values) =>{
+        if (!values) {
+            res.status(404).render("error");
+        }else {
+            console.log(values)
+            const passwordisvalid = bcrypt.compareSync(req.body.password,values.rows[0].user_password)
+            if (!passwordisvalid) {
+                res.status(401).render("error");
+            }else {
+                const token = auth.generateTokenForUser(values.rows[0].user_id)
+                res.cookie("user",token,{httpOnly : false}).send()
+            }
+        }
+    }) 
+}
 
 function add_user(req, res) {
     const name = req.body.name;
     const mail = req.body.mail;
-    const password = req.body.password;
+    const password = bcrypt.hashSync(req.body.password,5);
     const promise = model_users.postUser( name, mail, password)
     
     promise.then((values) => {
@@ -96,5 +116,6 @@ module.exports = {
     select_users,
     update_user,
     remove_user,
+    logIn,
 }
 
