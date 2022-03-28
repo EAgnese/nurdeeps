@@ -44,7 +44,11 @@ export default {
                     password: document.getElementById('new_password').value,
                 })
             }).then( (res) =>{
-                this.$emit('connect',res.cookie["user"])
+                res.json().then((data)=>{        
+                    this.$emit('connect',data)
+                    this.$router.push({path:'/games'})
+                })
+                
                 this.$router.push({path:'/games'})
             })
         },
@@ -57,8 +61,10 @@ export default {
                     password: document.getElementById('password').value,
                 })
             }).then( (res) =>{
-                this.$emit('connect', res)
-                this.$router.push({path:'/games'})
+                res.json().then((data)=>{
+                    this.$emit('connect', data)
+                    this.$router.push({path:'/games'})
+                })
             })
 
         }
