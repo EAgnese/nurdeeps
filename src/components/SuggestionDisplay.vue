@@ -79,7 +79,7 @@ export default ({
 }
 
 #suggestions-display{
-    margin: 25px 15% 25px 15%;
+    margin: 25px 15%;
 }
 
 .suggestion-user{
