@@ -25,6 +25,11 @@
 
 <script>
 export default {
+    data() {
+        return {
+            url : "http://localhost:8000/"
+        }
+    },
 
     methods: {
         signUp(){
@@ -35,7 +40,7 @@ export default {
             if ((document.getElementById('confirm_password').value == "")  || (document.getElementById('new_password').value == "") || (document.getElementById('new_name').value == "")) {
                 window.alert("must fill all input")
             }
-            fetch("http://localhost:8000/api/users/", {
+            fetch(this.url+"users/", {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -53,7 +58,7 @@ export default {
             })
         },
         signIn(){
-            fetch("http://localhost:8000/api/users/login", {
+            fetch(this.url+"users/login", {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
