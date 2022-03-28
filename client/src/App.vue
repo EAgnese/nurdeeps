@@ -7,7 +7,7 @@
       <router-link to="/login" class="login" v-if="this.isShowed">Login</router-link>
       <div class="login" v-if="!this.isShowed" @click="disconnect">Disconnect</div>
     </header>
-  <router-view @connect="connection(cookie)"></router-view>
+  <router-view></router-view>
     <footer>
       dévelopé par Eri AGNESE
     </footer>
