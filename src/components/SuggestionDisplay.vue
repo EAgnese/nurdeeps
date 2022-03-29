@@ -43,13 +43,13 @@ export default ({
             let pts = 0
             if (this.clickedMoins){
                 pts = 2
-                this.clickedPlus = false
+                this.clickedMoins = false
             }else {
                 pts = 1
             }
             this.clickedPlus = true
             const url = "https://api-nurspeed.herokuapp.com/"
-            const urlEdit = url+"suggestions"+this.suggestion.suggestion_code
+            const urlEdit = url+"suggestions/"+this.suggestion.suggestion_code
             fetch(urlEdit, {
                 method: "PUT",
                 headers: { 'Content-Type': 'application/json' },
@@ -79,7 +79,7 @@ export default ({
             }
             this.clickedMoins = true
             const url = "https://api-nurspeed.herokuapp.com/"
-            const urlEdit =  url+"suggestions"+this.suggestion.suggestion_code
+            const urlEdit =  url+"suggestions/"+this.suggestion.suggestion_code
             fetch(urlEdit, {
                 method: "PUT",
                 headers: { 'Content-Type': 'application/json' },
