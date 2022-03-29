@@ -40,12 +40,9 @@ export default ({
     },
     methods:{
         upPoints(){
-            let pts = 0
+            let pts = 1
             if (this.clickedMoins){
-                pts = 2
                 this.clickedMoins = false
-            }else {
-                pts = 1
             }
             this.clickedPlus = true
             const url = "https://api-nurspeed.herokuapp.com/"
@@ -70,12 +67,9 @@ export default ({
         },
 
         downPoints(){
-            let pts = 0
+            let pts = 1
             if (this.clickedPlus){
-                pts = 2
                 this.clickedPlus = false
-            }else {
-                pts = 1
             }
             this.clickedMoins = true
             const url = "https://api-nurspeed.herokuapp.com/"
