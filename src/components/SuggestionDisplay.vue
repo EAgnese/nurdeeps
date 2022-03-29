@@ -40,6 +40,7 @@ export default ({
     },
     methods:{
         upPoints(){
+            let pts = 0
             if (this.clickedMoins){
                 pts = 2
                 this.clickedPlus = false
