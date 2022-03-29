@@ -28,7 +28,8 @@ export default {
 
 
     created(){
-        const urlPlat = "http://localhost:8000/api/platforms/"+this.run.platform_code
+        const url = "https://api-nurspeed.herokuapp.com/"
+        const urlPlat = url+this.run.platform_code
         fetch(urlPlat, {
             method: "GET",
         }).then( (rep) =>{
@@ -38,7 +39,7 @@ export default {
           })
         })
 
-        const urlUser = "http://localhost:8000/api/users/"+this.run.user_id
+        const urlUser = url+this.run.user_id
         fetch(urlUser, {
             method: "GET",
         }).then( (rep) =>{
@@ -47,7 +48,7 @@ export default {
           })
         })
 
-        const urlCat = "http://localhost:8000/api/run_categories/"+this.run.run_category_code
+        const urlCat = url+this.run.run_category_code
         fetch(urlCat, {
             method: "GET",
         }).then( (rep) =>{

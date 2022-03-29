@@ -23,7 +23,8 @@ export default ({
         }
     },
     created(){
-        fetch("http://localhost:8000/api/games", {
+        const url = "https://api-nurspeed.herokuapp.com/"
+        fetch(url +"games", {
             method: "GET",
         }).then( (rep) =>{
             rep.json().then((data)=>{

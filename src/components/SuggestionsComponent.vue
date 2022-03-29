@@ -21,7 +21,8 @@ export default ({
     },
 
     created(){
-        fetch("http://localhost:8000/api/suggestions", {
+        const url = "https://api-nurspeed.herokuapp.com/"
+        fetch(url+"suggestions", {
             method: "GET",
         }).then( (rep) =>{
             rep.json().then((data)=>{

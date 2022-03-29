@@ -26,7 +26,8 @@ export default ({
       },
     },
     created(){
-        const urlUserId="http://localhost:8000/api/users/"+this.suggestion.user_id
+        const url = "https://api-nurspeed.herokuapp.com/"
+        const urlUserId=url+this.suggestion.user_id
         fetch(urlUserId, {
             method: "GET",
         }).then( (rep) =>{
@@ -37,7 +38,7 @@ export default ({
     },
     methods:{
         upPoints(){
-            const urlEdit = "http://localhost:8000/api/suggestions/"+this.suggestion.suggestion_code
+            const urlEdit = url+this.suggestion.suggestion_code
             fetch(urlEdit, {
                 method: "PUT",
                 headers: { 'Content-Type': 'application/json' },
@@ -52,7 +53,7 @@ export default ({
             })
         },
         downPoints(){
-            const urlEdit = "http://localhost:8000/api/suggestions/"+this.suggestion.suggestion_code
+            const urlEdit = url+this.suggestion.suggestion_code
             fetch(urlEdit, {
                 method: "PUT",
                 headers: { 'Content-Type': 'application/json' },

@@ -129,7 +129,8 @@ export default {
         }
     },
     created(){
-        fetch("http://localhost:8000/api/games/", {
+        const url = "https://api-nurspeed.herokuapp.com/"
+        fetch(url+"games/", {
             method: "GET",
         }).then( (rep) =>{
             rep.json().then((data)=>{
@@ -137,7 +138,7 @@ export default {
             })
         })
 
-        fetch("http://localhost:8000/api/game_types/", {
+        fetch(url+"game_types/", {
             method: "GET",
         }).then( (rep) =>{
             rep.json().then((data)=>{
@@ -145,7 +146,7 @@ export default {
             })
         })
 
-        fetch("http://localhost:8000/api/platforms/", {
+        fetch(url+"platforms/", {
             method: "GET",
         }).then( (rep) =>{
             rep.json().then((data)=>{
@@ -153,7 +154,7 @@ export default {
             })
         })
 
-        fetch("http://localhost:8000/api/runs/", {
+        fetch(url+"runs/", {
             method: "GET",
         }).then( (rep) =>{
             rep.json().then((data)=>{
@@ -161,7 +162,7 @@ export default {
             })
         })
 
-        fetch("http://localhost:8000/api/run_categories/", {
+        fetch(url+"run_categories/", {
             method: "GET",
         }).then( (rep) =>{
             rep.json().then((data)=>{
@@ -169,7 +170,7 @@ export default {
             })
         })
 
-        fetch("http://localhost:8000/api/users/", {
+        fetch(url+"users/", {
             method: "GET",
         }).then( (rep) =>{
             rep.json().then((data)=>{

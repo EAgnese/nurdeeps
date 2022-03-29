@@ -21,7 +21,7 @@ export default {
         }
     },
     created(){
-        const url = "http://localhost:8000/api/runs/"+this.$route.params.id
+        const url = "https://api-nurspeed.herokuapp.com/"+this.$route.params.id
         fetch(url, {
             method: "GET",
         }).then( (rep) =>{

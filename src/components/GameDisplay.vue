@@ -34,7 +34,7 @@ export default ({
     },
 
     created(){
-      const url = "http://localhost:8000/api/game_types/"+this.game.game_type_code
+      const url = "https://api-nurspeed.herokuapp.com/game_types/"+this.game.game_type_code
       fetch(url, {
           method: "GET",
       }).then( (rep) =>{

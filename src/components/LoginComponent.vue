@@ -25,14 +25,10 @@
 
 <script>
 export default {
-    data() {
-        return {
-            url : "http://localhost:8000/"
-        }
-    },
 
     methods: {
         signUp(){
+            const url = "https://api-nurspeed.herokuapp.com/"
             if (!(document.getElementById('confirm_password').value == document.getElementById('new_password').value)){
                 window.alert("must be same password")
                 return
@@ -40,7 +36,7 @@ export default {
             if ((document.getElementById('confirm_password').value == "")  || (document.getElementById('new_password').value == "") || (document.getElementById('new_name').value == "")) {
                 window.alert("must fill all input")
             }
-            fetch(this.url+"users/", {
+            fetch(url+"users/", {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -58,7 +54,8 @@ export default {
             })
         },
         signIn(){
-            fetch(this.url+"users/login", {
+            const url = "https://api-nurspeed.herokuapp.com/"
+            fetch(url+"users/login", {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
