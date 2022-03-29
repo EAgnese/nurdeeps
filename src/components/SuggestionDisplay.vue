@@ -38,6 +38,7 @@ export default ({
     },
     methods:{
         upPoints(){
+            const url = "https://api-nurspeed.herokuapp.com/"
             const urlEdit = url+this.suggestion.suggestion_code
             fetch(urlEdit, {
                 method: "PUT",
@@ -53,6 +54,7 @@ export default ({
             })
         },
         downPoints(){
+            const url = "https://api-nurspeed.herokuapp.com/"
             const urlEdit = url+this.suggestion.suggestion_code
             fetch(urlEdit, {
                 method: "PUT",
