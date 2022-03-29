@@ -3,9 +3,9 @@
         <div class="suggestion-contents"> {{this.suggestion.suggestion_contents}}</div>
         <div class="suggestion-user"> {{this.user_name}} </div>
         <div class="suggestion-points">
-            <div class="suggestion-up" @click.left.once="upPoints">↑</div>
+            <div class="suggestion-up" @click.left="upPoints" v-show="!this.clickedPlus" >↑</div>
             <div class="suggestion-num"> {{this.points}} </div>
-            <div class="suggestion-down" @click.left.once="downPoints">↓</div>
+            <div class="suggestion-down" @click.left="downPoints"  v-show="!this.clickedMoins">↓</div>
         </div>
     </div>
 </template>
@@ -16,7 +16,9 @@ export default ({
     data(){
       return {
         user_name:"",
-        points : this.suggestion.suggestion_points
+        points : this.suggestion.suggestion_points,
+        clickedPlus : false,
+        clickedMoins : false,
       }
     },
     props:{
@@ -27,7 +29,7 @@ export default ({
     },
     created(){
         const url = "https://api-nurspeed.herokuapp.com/"
-        const urlUserId=url+this.suggestion.user_id
+        const urlUserId=url+"users/"+this.suggestion.user_id
         fetch(urlUserId, {
             method: "GET",
         }).then( (rep) =>{
@@ -38,37 +40,64 @@ export default ({
     },
     methods:{
         upPoints(){
+            if (this.clickedMoins){
+                pts = 2
+                this.clickedPlus = false
+            }else {
+                pts = 1
+            }
+            this.clickedPlus = true
             const url = "https://api-nurspeed.herokuapp.com/"
-            const urlEdit = url+this.suggestion.suggestion_code
+            const urlEdit = url+"suggestions"+this.suggestion.suggestion_code
             fetch(urlEdit, {
                 method: "PUT",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     contents :this.suggestion.suggestion_contents,
-                    points: this.suggestion.suggestion_points + 1,
+                    points: this.suggestion.suggestion_points + pts,
                     user: this.suggestion.user_id,
                 })
             }).then( () =>{
-                this.points += 1 
-                console.log(this.suggestion.suggestion_points+1)
+                fetch(urlEdit, {
+                    method: "GET",
+                }).then( (rep) =>{
+                    rep.json().then((data)=>{
+                        this.points = data[0].suggestion_points;
+                    })
+                })
             })
         },
+
         downPoints(){
+            let pts = 0
+            if (this.clickedPlus){
+                pts = 2
+                this.clickedPlus = false
+            }else {
+                pts = 1
+            }
+            this.clickedMoins = true
             const url = "https://api-nurspeed.herokuapp.com/"
-            const urlEdit = url+this.suggestion.suggestion_code
+            const urlEdit =  url+"suggestions"+this.suggestion.suggestion_code
             fetch(urlEdit, {
                 method: "PUT",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     contents :this.suggestion.suggestion_contents,
-                    points: this.suggestion.suggestion_points -1,
+                    points: this.suggestion.suggestion_points - pts,
                     user: this.suggestion.user_id,
                 })
             }).then( () =>{
-                this.points -= 1 
+                fetch(urlEdit, {
+                    method: "GET",
+                }).then( (rep) =>{
+                    rep.json().then((data)=>{
+                        this.points = data[0].suggestion_points;
+                    })
+                })
             })
         },
-    },
+    }
 })
 </script>
 
