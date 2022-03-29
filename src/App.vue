@@ -9,7 +9,7 @@
         <div class="login" v-if="!this.isShowed" @click="disconnect">Disconnect</div>
       </div>
     </header>
-    <router-view></router-view>
+    <router-view v-on:connect="connection(data)"></router-view>
     <footer>
       dévelopé par Eri AGNESE
     </footer>
@@ -29,9 +29,9 @@ export default {
     }
   },
   methods: {
-    connection(cookie){
+    connection(data){
       this.isShowed = false
-      this.isAdmin = cookie.isAdmin
+      this.isAdmin = data.isAdmin
     },
     disconnect(){
       this.isShowed = true

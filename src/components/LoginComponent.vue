@@ -25,6 +25,11 @@
 
 <script>
 export default {
+    data() {
+        return {
+            url : "http://localhost:8000/"
+        }
+    },
 
     methods: {
         signUp(){
@@ -35,7 +40,7 @@ export default {
             if ((document.getElementById('confirm_password').value == "")  || (document.getElementById('new_password').value == "") || (document.getElementById('new_name').value == "")) {
                 window.alert("must fill all input")
             }
-            fetch("http://localhost:8000/api/users/", {
+            fetch(this.url+"users/", {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -44,12 +49,16 @@ export default {
                     password: document.getElementById('new_password').value,
                 })
             }).then( (res) =>{
-                this.$emit('connect',res.cookie["user"])
+                res.json().then((data)=>{        
+                    this.$emit('connect',data)
+                    this.$router.push({path:'/games'})
+                })
+                
                 this.$router.push({path:'/games'})
             })
         },
         signIn(){
-            fetch("http://localhost:8000/api/users/login", {
+            fetch(this.url+"users/login", {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -57,8 +66,10 @@ export default {
                     password: document.getElementById('password').value,
                 })
             }).then( (res) =>{
-                this.$emit('connect', res)
-                this.$router.push({path:'/games'})
+                res.json().then((data)=>{
+                    this.$emit('connect', data)
+                    this.$router.push({path:'/games'})
+                })
             })
 
         }
