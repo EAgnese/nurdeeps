@@ -45,12 +45,12 @@ export default {
                     password: document.getElementById('new_password').value,
                 })
             }).then( (res) =>{
-                res.json().then((data)=>{        
+                res.json().then((data)=>{     
+                    console;log(data)   
                     this.$emit('connect',data)
                     this.$router.push({path:'/games'})
                 })
-                
-                this.$router.push({path:'/games'})
+            
             })
         },
         signIn(){
@@ -64,6 +64,7 @@ export default {
                 })
             }).then( (res) =>{
                 res.json().then((data)=>{
+                    console;log(data)
                     this.$emit('connect', data)
                     this.$router.push({path:'/games'})
                 })
