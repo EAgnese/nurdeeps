@@ -46,7 +46,7 @@ export default {
                 })
             }).then( (res) =>{
                 res.json().then((data)=>{     
-                    console;log(data)   
+                    console.log(data)   
                     this.$emit('connect',data)
                     this.$router.push({path:'/games'})
                 })
@@ -64,7 +64,7 @@ export default {
                 })
             }).then( (res) =>{
                 res.json().then((data)=>{
-                    console;log(data)
+                    console.log(data)
                     this.$emit('connect', data)
                     this.$router.push({path:'/games'})
                 })
