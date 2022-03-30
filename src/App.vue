@@ -31,7 +31,7 @@ export default {
   methods: {
     connection(data){
       this.isShowed = false
-      this.isAdmin = data.isAdmin
+      this.isAdmin = data[1]
     },
     disconnect(){
       this.isShowed = true
