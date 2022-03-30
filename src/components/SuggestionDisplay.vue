@@ -43,6 +43,7 @@ export default ({
             let pts = 1
             if (this.clickedMoins){
                 this.clickedMoins = false
+                pts = 2
             }
             this.clickedPlus = true
             const url = "https://api-nurspeed.herokuapp.com/"
@@ -52,16 +53,14 @@ export default ({
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     contents :this.suggestion.suggestion_contents,
-                    points: this.suggestion.suggestion_points + pts,
+                    points: this.suggestion.suggestion_points + 1,
                     user: this.suggestion.user_id,
                 })
             }).then( () =>{
                 fetch(urlEdit, {
                     method: "GET",
-                }).then( (rep) =>{
-                    rep.json().then((data)=>{
-                        this.points = data[0].suggestion_points;
-                    })
+                }).then( () =>{
+                    this.points += pts;
                 })
             })
         },
@@ -70,6 +69,7 @@ export default ({
             let pts = 1
             if (this.clickedPlus){
                 this.clickedPlus = false
+                pts = 2
             }
             this.clickedMoins = true
             const url = "https://api-nurspeed.herokuapp.com/"
@@ -79,16 +79,14 @@ export default ({
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     contents :this.suggestion.suggestion_contents,
-                    points: this.suggestion.suggestion_points - pts,
+                    points: this.suggestion.suggestion_points - 1,
                     user: this.suggestion.user_id,
                 })
             }).then( () =>{
                 fetch(urlEdit, {
                     method: "GET",
-                }).then( (rep) =>{
-                    rep.json().then((data)=>{
-                        this.points = data[0].suggestion_points;
-                    })
+                }).then( () =>{
+                    this.points -= pts;
                 })
             })
         },
