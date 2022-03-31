@@ -66,11 +66,11 @@ export default {
                         mail: this.email,
                         password:  this.password,
                     })
-                }).then( (res) =>{
-                    res.json().then((data)=>{     
-                        console.log(data)
-                        this.$router.push({path:'/'})
-                    })
+                }).then( () =>{
+                    // res.json().then((data)=>{     
+                    //     console.log(data)
+                    //     this.$router.push({path:'/'})
+                    // })
                 
                 })
             }else {
@@ -82,17 +82,17 @@ export default {
                         name : this.name,
                         password:  this.password,
                     })
-                }).then( (res) =>{
-                    if(res.status===200){
-                        res.json().then((data)=>{
-                            console.log(data)
-                            this.$router.push({path:'/'})
-                        })
-                    }else{
-                        if(res.status===401){
-                            console.log(res)
-                        }
-                    }
+                }).then( () =>{
+                    // if(res.status===200){
+                    //     res.json().then((data)=>{
+                    //         console.log(data)
+                    //         this.$router.push({path:'/'})
+                    //     })
+                    // }else{
+                    //     if(res.status===401){
+                    //         console.log(res)
+                    //     }
+                    // }
                    
                 })
             }

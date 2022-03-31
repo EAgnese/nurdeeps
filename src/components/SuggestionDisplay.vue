@@ -57,11 +57,9 @@ export default ({
                     user: this.suggestion.user_id,
                 })
             }).then( () =>{
-                fetch(urlEdit, {
-                    method: "GET",
-                }).then( () =>{
-                    this.points += pts;
-                })
+                
+                this.points += pts;
+                
             })
         },
 
@@ -83,11 +81,9 @@ export default ({
                     user: this.suggestion.user_id,
                 })
             }).then( () =>{
-                fetch(urlEdit, {
-                    method: "GET",
-                }).then( () =>{
-                    this.points -= pts;
-                })
+                
+                this.points -= pts;
+                
             })
         },
     }
