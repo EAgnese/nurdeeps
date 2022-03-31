@@ -69,7 +69,6 @@ export default {
     border-radius: 20px;
     border-collapse: collapse;
     text-align: center;
-    cursor:pointer;
     padding: 5px;
     font-size: 20px;
 }
