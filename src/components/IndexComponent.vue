@@ -11,4 +11,12 @@
     div{
         text-align: center;
     }
+    @media (max-width: 600px) {
+        h1 {
+            font-size: 35px;    
+        }
+        p {
+            font-size: 20px;    
+        }
+    }
 </style>
