@@ -54,6 +54,9 @@ export default {
         },
         sign(){
             const url = "https://api-nurspeed.herokuapp.com/"
+            if (!this.validateFields){
+                return
+            }
             if (this.mode == "up") {
                 fetch(url+"users/", {
                     method: "POST",
