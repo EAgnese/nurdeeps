@@ -9,7 +9,7 @@
         <div class="login" v-if="!this.isShowed" @click="disconnect">Disconnect</div>
       </div>
     </header>
-    <router-view v-on:connect="connection(data)"></router-view>
+    <router-view></router-view>
     <footer>
       dévelopé par Eri AGNESE
     </footer>

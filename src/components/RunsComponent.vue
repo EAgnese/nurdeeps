@@ -1,6 +1,6 @@
 <template>
    <div>
-        Runs of {{this.$route.params.id}} <br>
+        Runs of {{this.game}} <br>
         <div id="runs-display">
             <RunDisplay v-for="run in getList" :key="run" :run="run"></RunDisplay>
         </div>
@@ -18,11 +18,21 @@ export default {
     data(){
         return {
             list : [],
+            game: "",
         }
     },
     created(){
-        const url = "https://api-nurspeed.herokuapp.com/"+this.$route.params.id
-        fetch(url, {
+        const url = "https://api-nurspeed.herokuapp.com/"
+        const urlGame = url + "games/" +this.$route.params.id
+        fetch(urlGame, {
+            method: "GET",
+        }).then( (rep) =>{
+            rep.json().then((data)=>{
+                this.game = data[0].game_libelle;
+            })
+        })
+        const urlRuns = url + "runs/game/" +this.$route.params.id
+        fetch(urlRuns, {
             method: "GET",
         }).then( (rep) =>{
             rep.json().then((data)=>{

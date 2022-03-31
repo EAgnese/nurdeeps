@@ -15,7 +15,8 @@ export default {
         return {
             run_category:"",
             platform_libelle:"",
-            user:""
+            user:"",
+            game:""
         }
     },
     
@@ -29,7 +30,7 @@ export default {
 
     created(){
         const url = "https://api-nurspeed.herokuapp.com/"
-        const urlPlat = url+this.run.platform_code
+        const urlPlat = url+"platforms/"+this.run.platform_code
         fetch(urlPlat, {
             method: "GET",
         }).then( (rep) =>{
@@ -39,7 +40,7 @@ export default {
           })
         })
 
-        const urlUser = url+this.run.user_id
+        const urlUser = url+"users/"+this.run.user_id
         fetch(urlUser, {
             method: "GET",
         }).then( (rep) =>{
@@ -48,7 +49,7 @@ export default {
           })
         })
 
-        const urlCat = url+this.run.run_category_code
+        const urlCat = url+"run_categories/"+this.run.run_category_code
         fetch(urlCat, {
             method: "GET",
         }).then( (rep) =>{
